@@ -1,0 +1,15 @@
+[[redirects]]
+from = "/api/binance/*"
+to = "https://data-api.binance.vision/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/super-secret-CryptOrion-System"
+to = "/super-secret-CryptOrion-System.html"
+status = 200
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
