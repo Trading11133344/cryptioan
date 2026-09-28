@@ -1,0 +1,1 @@
+{"rewrites":[{"source":"/api/binance/:path*","destination":"https://data-api.binance.vision/:path*"},{"source":"/super-secret-CryptOrion-System","destination":"/super-secret-CryptOrion-System.html"},{"source":"/(.*)","destination":"/index.html"}]}

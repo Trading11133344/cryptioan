@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+:root{font-family:'IBM Plex Sans',sans-serif;color:#eaf2f0;background:#080c0d}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:#080c0d}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.card{background:#12191a;border:1px solid #263536;border-radius:12px}
+.card2{background:#182122;border:1px solid #263536;border-radius:10px}
+.gold{color:#00d897}
+.muted{color:#7d8b89}
+.up{color:#16c784}
+.down{color:#f6465d}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.badge-ok{background:rgba(22,199,132,.12);color:#16c784}
+.badge-warn{background:rgba(0,216,151,.1);color:#00d897}
+.badge-err{background:rgba(246,70,93,.12);color:#f6465d}
+.badge-muted{background:#182122;color:#7d8b89}
+.input{background:#182122;border:1px solid #263536;border-radius:8px;padding:11px 13px;color:#eaf2f0;outline:none;width:100%}
+.input:focus{border-color:#00d897}
+.input:disabled{opacity:.5;cursor:not-allowed}
+select.input{appearance:none}
+.primary{background:#00d897;color:#080c0d;font-weight:700;border-radius:8px;padding:11px 16px;transition:filter .15s,transform .05s,opacity .15s}
+.ghost{background:#182122;color:#eaf2f0;border:1px solid #263536;border-radius:8px;padding:10px 14px;transition:filter .15s,transform .05s,opacity .15s}
+.primary:hover:not(:disabled){filter:brightness(1.12)}
+.ghost:hover:not(:disabled){border-color:#00d897;color:#00d897}
+.primary:active:not(:disabled),.ghost:active:not(:disabled){transform:translateY(1px)}
+.primary:disabled,.ghost:disabled{opacity:.45;cursor:not-allowed}
+.btn-success{background:#16c784!important;color:#080c0d!important}
+.btn-error{background:#f6465d!important;color:#fff!important}
+.btn-loading{position:relative;color:transparent!important}
+.btn-loading::after{content:'';position:absolute;inset:0;margin:auto;width:15px;height:15px;border:2px solid rgba(8,12,13,.3);border-top-color:#080c0d;border-radius:50%;animation:co-spin .7s linear infinite}
+.ghost.btn-loading::after{border-color:rgba(234,242,240,.25);border-top-color:#eaf2f0}
+@keyframes co-spin{to{transform:rotate(360deg)}}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:12px 12px;border-bottom:1px solid #263536;text-align:left;white-space:nowrap}
+.table th{color:#7d8b89;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.table tbody tr:hover{background:#18212255}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gridbg{background-image:linear-gradient(#26353633 1px,transparent 1px),linear-gradient(90deg,#26353633 1px,transparent 1px);background-size:42px 42px}
+.flash-up{animation:co-up .5s}
+@keyframes co-up{50%{color:#16c784}}
+.flash-dn{animation:co-dn .5s}
+@keyframes co-dn{50%{color:#f6465d}}
+.sidebar.mobile-open{display:block!important;position:fixed;left:0;top:68px;bottom:0;width:250px;z-index:40;background:#0d1213;border-right:1px solid #263536;overflow:auto;padding:12px}
+.bottom-nav{display:none!important}
+@media(max-width:768px){
+  .desktop-only{display:none!important}
+  .mobile-pad{padding:16px!important}
+  .hero-title{font-size:40px!important}
+  .bottom-nav{display:flex!important}
+  .sidebar{display:none!important}
+  .sidebar.mobile-open{display:block!important}
+}
+
+/* ============ 3D blockchain backdrop ============ */
+.net-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.chain3d-scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;perspective:1200px;pointer-events:none}
+.chain3d-glow{position:absolute;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle,rgba(0,216,151,.22),transparent 66%);filter:blur(10px);animation:glow-breathe 6s ease-in-out infinite}
+.chain3d{--cs:clamp(54px,8.5vw,112px);position:relative;display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);transform-style:preserve-3d;animation:chain-spin 28s linear infinite}
+.cube{position:relative;width:var(--cs);height:var(--cs);transform-style:preserve-3d;animation:cube-bob 5.4s ease-in-out infinite}
+.cube .f{position:absolute;inset:0;border:1.5px solid rgba(0,216,151,.8);background:rgba(0,216,151,.1);box-shadow:inset 0 0 30px rgba(0,216,151,.22),0 0 18px rgba(0,216,151,.12)}
+.cube .f1{transform:translateZ(calc(var(--cs)/2))}
+.cube .f2{transform:rotateY(180deg) translateZ(calc(var(--cs)/2))}
+.cube .f3{transform:rotateY(90deg) translateZ(calc(var(--cs)/2))}
+.cube .f4{transform:rotateY(-90deg) translateZ(calc(var(--cs)/2))}
+.cube .f5{transform:rotateX(90deg) translateZ(calc(var(--cs)/2))}
+.cube .f6{transform:rotateX(-90deg) translateZ(calc(var(--cs)/2))}
+.cube-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:rgba(0,216,151,.9);font-size:calc(var(--cs)*.3);letter-spacing:.05em;text-shadow:0 0 18px rgba(0,216,151,.6)}
+.link3d{width:clamp(20px,3vw,38px);height:2.5px;background:linear-gradient(90deg,rgba(0,216,151,.2),rgba(0,216,151,.95),rgba(0,216,151,.2));border-radius:2px;position:relative;overflow:visible}
+.link3d::after{content:'';position:absolute;top:-2.5px;left:-8px;width:7px;height:7px;border-radius:50%;background:#00d897;box-shadow:0 0 10px #00d897,0 0 22px rgba(0,216,151,.55);animation:link-run 2.6s cubic-bezier(.4,0,.6,1) infinite}
+.mote{position:absolute;bottom:-4%;width:3px;height:3px;border-radius:50%;background:rgba(0,216,151,.7);box-shadow:0 0 8px rgba(0,216,151,.8);animation:mote-rise linear infinite;opacity:0}
+.logo-pulse{animation:logo-glow 3.2s ease-in-out infinite}
+@keyframes chain-spin{from{transform:rotateX(-16deg) rotateY(0deg)}to{transform:rotateX(-16deg) rotateY(360deg)}}
+@keyframes cube-bob{0%,100%{transform:translateY(-9px)}50%{transform:translateY(9px)}}
+@keyframes link-run{from{left:-8px}to{left:calc(100% + 2px)}}
+@keyframes mote-rise{0%{transform:translateY(0);opacity:0}12%{opacity:.9}85%{opacity:.45}100%{transform:translateY(-70vh);opacity:0}}
+@keyframes glow-breathe{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes logo-glow{0%,100%{filter:drop-shadow(0 0 2px rgba(0,216,151,.25))}50%{filter:drop-shadow(0 0 9px rgba(0,216,151,.6))}}
+@media (prefers-reduced-motion:reduce){.chain3d,.cube,.link3d::after,.mote,.chain3d-glow,.logo-pulse{animation:none!important}}
+.cube-logo{position:absolute;left:50%;top:50%;width:54%;height:54%;transform:translate(-50%,-50%);filter:drop-shadow(0 0 9px rgba(0,216,151,.6))}
+.cube-hero{--bump:1.16}
+.cube-hero .f{border-color:rgba(0,216,151,.95);background:rgba(0,216,151,.14)}
+.cube-hero .cube-logo{width:64%;height:64%;filter:drop-shadow(0 0 14px rgba(0,216,151,.85))}
+/* ============ spinning 3D coins ============ */
+.coin-chain{position:relative;display:flex;align-items:center;gap:clamp(16px,2.6vw,34px);transform-style:preserve-3d}
+.coin3d{--cc:#00d897;--glow:rgba(0,216,151,.35);--cz:clamp(64px,8vw,118px);--spd:7s;position:relative;width:var(--cz);height:var(--cz);transform-style:preserve-3d;animation:coin-spin var(--spd) linear infinite,coin-bob 5.4s ease-in-out infinite;animation-delay:0s,var(--bd,0s)}
+.coin-big{--cz:clamp(88px,11.5vw,152px);--spd:9s}
+.coin-btc{--cc:#f7931a;--glow:rgba(247,147,26,.42)}
+.coin-eth{--cc:#7b96f0;--glow:rgba(123,150,240,.38)}
+.coin-usdt{--cc:#2bbd8b;--glow:rgba(43,189,139,.42)}
+.coin-rim{position:absolute;inset:0;border-radius:50%;background:#0d1213;border:2.5px solid var(--cc);box-shadow:0 0 22px var(--glow)}
+.coin-face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;overflow:hidden;box-shadow:0 0 34px var(--glow),inset 0 0 20px rgba(0,0,0,.35)}
+.coin-face svg{width:100%;height:100%;display:block}
+.coin-front{transform:translateZ(5px)}
+.coin-back{transform:rotateY(180deg) translateZ(5px)}
+@keyframes coin-spin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+@keyframes coin-bob{0%,100%{translate:0 -9px}50%{translate:0 9px}}
+@media (prefers-reduced-motion:reduce){.coin3d{animation:none!important}.coin3d .coin-front{transform:translateZ(5px) rotateY(-18deg)}}
+/* background depth coins */
+.bg-coins{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.coin-bg{--cz:clamp(34px,4.6vw,64px);--spd:16s;position:absolute;opacity:.42;filter:blur(1px);transform:translateZ(-130px);animation:coin-spin var(--spd) linear infinite,coin-bob 7.5s ease-in-out infinite}
+.coin-bg .coin-face{box-shadow:0 0 16px var(--glow)}
+.coin-bg:nth-child(2){transform:translateZ(-170px)}
+.coin-bg:nth-child(3){transform:translateZ(-110px)}
+.coin-bg:nth-child(4){transform:translateZ(-150px)}
+.coin-bg:nth-child(5){transform:translateZ(-190px)}
+/* ============ grand 3D logo ============ */
+.gl-scene{position:relative;flex:none;perspective:750px}
+.gl-core{position:absolute;inset:0;transform-style:preserve-3d;animation:gl-tilt 9s ease-in-out infinite}
+.gl-layer{position:absolute;inset:0;width:100%;height:100%}
+.gl-front{filter:drop-shadow(0 0 16px rgba(0,216,151,.7))}
+.gl-orbit{position:absolute;inset:calc(var(--gs) * -0.13);border-radius:50%;border:1.5px solid rgba(0,216,151,.4);transform:rotateX(72deg);animation:orbit-spin 14s linear infinite}
+.gl-orbit i{position:absolute;top:-3.5px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#00d897;box-shadow:0 0 12px #00d897,0 0 26px rgba(0,216,151,.7)}
+.gl-belt i{position:absolute;width:4px;height:4px;border-radius:50%;background:#eaf2f0;box-shadow:0 0 9px rgba(234,242,240,.95);animation:twinkle 3.2s ease-in-out infinite}
+.gl-word{font-weight:800;font-size:clamp(30px,3.3vw,50px);line-height:1.05;letter-spacing:.01em;color:#eaf2f0;text-shadow:0 1px 0 #060a0b,0 2px 0 #050809,0 3px 0 #040708,0 4px 8px rgba(0,0,0,.55),0 10px 30px rgba(0,216,151,.28)}
+.gl-word b{color:#00d897;text-shadow:0 0 24px rgba(0,216,151,.6),0 1px 0 #060a0b,0 2px 0 #050809,0 4px 12px rgba(0,216,151,.4)}
+.gl-tag{letter-spacing:.4em;font-size:11px;color:#7d8b89;margin-top:7px}
+@keyframes gl-tilt{0%,100%{transform:rotateY(-26deg) rotateX(8deg)}50%{transform:rotateY(26deg) rotateX(-6deg)}}
+@keyframes orbit-spin{from{transform:rotateX(72deg) rotateZ(0deg)}to{transform:rotateX(72deg) rotateZ(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.gl-core,.gl-orbit,.gl-belt i{animation:none!important}.gl-core{transform:rotateY(-18deg)}}
+/* ============ logged-in app 3D backdrop ============ */
+.app-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+.app-bg-glow{position:absolute;left:50%;top:-140px;width:920px;height:430px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(0,216,151,.11),transparent 70%);filter:blur(22px)}
+.app-coins{position:absolute;inset:0;perspective:1000px;transform-style:preserve-3d}
+.coin-app{--cz:clamp(46px,5.4vw,80px);--spd:17s;position:absolute;opacity:.4;filter:blur(.8px);animation:coin-spin var(--spd) linear infinite,coin-bob 8s ease-in-out infinite}
+.coin-app .coin-face{box-shadow:0 0 16px var(--glow)}
+@media (max-width:768px){.app-coins{display:none}}

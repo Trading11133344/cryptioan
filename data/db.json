@@ -1,0 +1,21 @@
+{
+  "nextId": 700101,
+  "issuedMax": 700100,
+  "cfg": {
+    "addresses": {
+      "BTC": "1CK2qFkXe8bEZiwqnAqxoWtGwPCqTPamUm",
+      "ETH": "0x51c2f8d0f06056574ff12c2db4a9d93b25e7760f",
+      "USDT": "TE3k8vs79GwftLT4VYi6FNQLWKkDzNRYLM",
+      "XRP": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
+      "TON": ""
+    }
+  },
+  "users": [],
+  "deposits": [],
+  "withdrawals": [],
+  "orders": [],
+  "trades": [],
+  "audit": [],
+  "support": [],
+  "callbacks": []
+}
