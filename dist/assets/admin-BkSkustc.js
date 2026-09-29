@@ -1,0 +1,1 @@
+import{a as e,i as t,r as n,t as r}from"./App-2H7kjlm5.js";e();var i=t(),a=n();(0,i.createRoot)(document.getElementById(`admin-root`)).render((0,a.jsx)(r,{}));

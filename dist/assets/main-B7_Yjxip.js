@@ -1,0 +1,1 @@
+import{a as e,i as t,n,r}from"./App-2H7kjlm5.js";e();var i=t(),a=r();(0,i.createRoot)(document.getElementById(`root`)).render((0,a.jsx)(n,{}));
